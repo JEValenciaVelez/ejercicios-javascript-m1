@@ -28,7 +28,33 @@ REQUISITOS
 
 function ordenarPedidos(tragos) {
    // Tu código aquí:
+  let cambio = true; //creo variable interruptor para el while
+
+  while(cambio){
+
+    cambio = false; //cuando entro al while  el interruptoop lo apago
+    for(let i = 0; i < tragos.length-1; i++){
+      let aux = tragos[i]; // guardo el elemento anterior en variable por si hay que cambiarlo no se borre
+      if(tragos[i].pedido.precio > tragos[i+1].pedido.precio){
+        tragos[i] = tragos[i +1];
+        tragos[i+1]= aux; // a la pos de adelante le asigno la que estaba atras
+        cambio = true; // si hace el cambio vuelvo y prendo el interruptor para volver a validar;
+      }else{
+
+      }
+    }
+    
+  }
+  return tragos;
 }
+const productos = [
+  { nombre: 'Franco', pedido: { nombre: 'Fernet', precio: 260 } },
+  { nombre: 'juan', pedido: { nombre: 'Gancia', precio: 220 } },
+  { nombre: 'Nico', pedido: { nombre: 'Vodka', precio: 285 } },
+  { nombre: 'Fer', pedido: { nombre: 'Martini', precio: 430 } },
+];
+
+console.log(ordenarPedidos(productos))
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {

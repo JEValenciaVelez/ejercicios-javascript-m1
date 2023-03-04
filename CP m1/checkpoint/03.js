@@ -31,28 +31,20 @@ REQUISITOS
 No debería de arrojar el error si nos pasan los tragos en minúscula o mayúscula, y si esta en la carta debe encontrarlo igual.
 */
 
-function consultarPreparacion(tragos=[]) {
+function consultarPreparacion(tragos) {
    // Tu código aquí:
-   function menu(carta){
-    //debo iterar en la carta que es un array de objetos
-    let array = [];
-    for(let object of carta){
-      
-      if(tragos.includes(Object.values(object)[0])){
-
-        let mensaje = [`El trago: ${Object.values(object)[0]}, se prepara de la siguiente forma: ${Object.values(object)[1]}`];
-        array.push(mensaje);
-    
+   return function (carta){
+    const result = [];
+    for(const trago of tragos){
+      const bebida = carta.find(function(b){ return b.name.toLowerCase()===trago.toLowerCase()});//me retona true o false
+      if(bebida){
+        result.push([`El trago: ${bebida.name}, se prepara de la siguiente forma: ${bebida.preparacion}`]);
+      }else{
+        return "Por favor verifique bien los nombres de los tragos que quiere solicitar su preparación";
       }
-      else if(!tragos.includes(Object.values(object)[0])){
-        return 'Por favor verifique bien los nombres de los tragos que quiere solicitar su preparación';
-      
     }
-    
-    }
-    return array;
-  }
-  return menu;
+    return result;
+   }
 
 }
 const tragos2 = ['Fernet', 'Destornillador', 'Gancia'];

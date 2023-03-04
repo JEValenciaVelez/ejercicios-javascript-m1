@@ -20,9 +20,33 @@ REQUISITOS
   🟢 Si ningún precio supera al recibido por parámetros, retornar un mensaje que diga "No hay tragos disponibles".
 */
 
-function encontrarMasCaros(arreglo, precio) {
+function encontrarMasCaros(arreglo=[], precio, ) {
    // Tu código aquí:
+   let i = 0;
+   let masCaros = [];
+
+   while(i < arreglo.length){
+     
+      if(arreglo[i].precio > precio){
+         masCaros.push(arreglo[i]);
+      }
+
+      i++;
+   }
+   if(masCaros.length < 1) return "No hay tragos disponibles";
+
+   return masCaros;
+
+
 }
+const tragos = [
+   { nombre: 'Whisky', precio: 312 },
+   { nombre: 'Ron', precio: 156 },
+   { nombre: 'Gin', precio: 215 },
+   { nombre: 'Vino tinto', precio: 100 },
+];
+console.log(encontrarMasCaros(tragos,400));
+
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {

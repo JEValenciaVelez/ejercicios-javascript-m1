@@ -22,7 +22,27 @@ OUTPUT --> Head ➡ ({nombre: "Franco", trago: "Fernet"}) ➡ ({nombre: "Franco"
 
 LinkedList.prototype.encontrarPedidoRepetido = function (nombre) {
    // Tu código aquí:
+   let newList = new LinkedList();
+   let current = this.head;
+
+    while(current){
+       if(current.value.nombre === nombre){
+          newList.add(current.value);
+         }
+           current = current.next;
+      }
+      if(!newList.head) return false;
+    return newList;
+   //console.log(current.value.nombre)
 };
+const lista1 = new LinkedList();
+lista1.add({ nombre: "Franco", trago: "Fernet" });
+lista1.add({ nombre: "Martin", trago: "Gancia" });
+lista1.add({ nombre: "Franco", trago: "Fernet" });
+lista1.add({ nombre: "Mateo", trago: "Cerveza Corona" });
+lista1.add({ nombre: "Nico", trago: "Negroni" });
+lista1.add({ nombre: "Ale", trago: "Cerveza IPA" });
+console.log(lista1.encontrarPedidoRepetido('Franco'))
 
 // ⚠️ NO MODIFICAR NADA DEBAJO DE ESTA LINEA ⚠️
 module.exports = LinkedList;

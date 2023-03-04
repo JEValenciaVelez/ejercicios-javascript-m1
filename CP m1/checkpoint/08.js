@@ -27,9 +27,33 @@ REQUISITOS
   Caso contrario, ¡no deben arreglarlos en nuestra nueva lista!
 */
 
-LinkedList.prototype.entregarPedido = function (clientes) {
+LinkedList.prototype.entregarPedido = function (clientes=[]) {
    // Tu código aquí:
+   const newList = new LinkedList();
+   
+   let current = this.head;
+
+   while(current){
+      for(let cliente of clientes){
+         const value = {};
+         if(cliente === current.value.nombre){
+            value['pedido'] = current.value.trago;
+            value['recibo'] = current.value.precio;
+            newList.add(value);
+         }
+      }
+      current = current.next;
+   }
+   return newList;
 };
+const lista = new LinkedList();
+lista.add({ nombre: 'Franco', trago: 'Fernet', precio: 200 });
+      lista.add({ nombre: 'Marcos', trago: 'Gancia', precio: 150 });
+      lista.add({ nombre: 'Juan', trago: 'Negroni', precio: 100 });
+      lista.add({ nombre: 'Nico', trago: 'Cerveza', precio: 260 });
+      lista.add({ nombre: 'Mateo', trago: 'Vino tinto', precio: 210 });
+      const slicedList = lista.entregarPedido(['Franco', 'Marcos']);
+      console.log(slicedList);
 
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
