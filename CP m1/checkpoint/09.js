@@ -36,11 +36,27 @@ REQUISITOS
 ⛔️ TIP: puedes utilizar default parameters para ayudarte.
 */
 
-BinarySearchTree.prototype.consultarTragos = function (efectivo) {
+BinarySearchTree.prototype.consultarTragos = function (efectivo,mylist=[]) {
    // Tu código aquí:
-   
-};
+   //si el valor de la prop precio de la prop value  del nodo en el que me encuentro parado,es menor o igual al efectivo 
+   if(this.value.precio <= efectivo) mylist.push(this.value.nombre);//a myList pusheale el valor de la prop nombre de la prop value
+   if(this.left) this.left.consultarTragos(efectivo, mylist);//si hay algon en la prop left del nodo vuelve y valida
+   if(this.right) this.right.consultarTragos(efectivo, mylist);// si hay algo en la prop right del nodo, vuelve y valida
+   return mylist; //retorna la lista
+ // console.log(mylist);
 
+};
+const arbol = new BinarySearchTree({ nombre: 'Gancia', precio: 400 });
+      arbol.insert({ nombre: 'Fernet', precio: 500 });
+      arbol.insert({ nombre: 'Agua', precio: 200 });
+      arbol.insert({ nombre: 'Malibu', precio: 400 });
+      arbol.insert({ nombre: 'Long Island', precio: 400 });
+      arbol.insert({ nombre: 'Martini', precio: 800 });
+      arbol.insert({ nombre: 'Tom Collins', precio: 1000 });
+      arbol.insert({ nombre: 'Bailey', precio: 900 });
+      arbol.insert({ nombre: 'Caipi', precio: 700 });
+
+console.log(arbol.consultarTragos(200));
 // ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
    BinarySearchTree,
