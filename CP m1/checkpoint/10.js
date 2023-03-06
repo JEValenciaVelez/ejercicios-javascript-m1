@@ -28,9 +28,46 @@ REQUISITOS
 ⛔️ TIP: Podés usar default parameters para ayudarte.
 */
 
-BinarySearchTree.prototype.enOrden = function () {
+BinarySearchTree.prototype.enOrden = function (myList=[]) {
    //  Tu código aquí:
+  // recorro el arbol y pusheo en myList q declare como default parameter, para q me sirva de acumulador en la recursion
+   if(this.value) myList.push(this.value);
+   if(this.left) this.left.enOrden(myList);
+   if(this.right) this.right.enOrden(myList);
+
+   //luego de tener lista myList con los objetos values del arbol desordenados 
+   //implemento algortmo de ordenamiento
+
+   let cambio = true;
+
+   while(cambio){
+      cambio = false;
+      for(let i = 0; i < myList.length-1; i++){
+         for(let j = i + 1; j < myList.length; j++){
+            let aux = myList[i];
+            if(myList[i].nombre > myList[j].nombre){
+               myList[i] = myList[j];
+               myList[j] = aux;
+               cambio = true;
+            }
+         }
+
+      }
+   }
+   //apenas este oredenada la lista retornala
+   return myList;
 };
+const arbol = new BinarySearchTree({ nombre: 'Gancia', precio: 400 });
+      arbol.insert({ nombre: 'Fernet', precio: 500 });
+      arbol.insert({ nombre: 'Agua', precio: 200 });
+      arbol.insert({ nombre: 'Malibu', precio: 400 });
+      arbol.insert({ nombre: 'Long Island', precio: 400 });
+      arbol.insert({ nombre: 'Martini', precio: 800 });
+      arbol.insert({ nombre: 'Tom Collins', precio: 1000 });
+      arbol.insert({ nombre: 'Bailey', precio: 900 });
+      arbol.insert({ nombre: 'Caipi', precio: 700 });
+
+      console.log(arbol.enOrden());
 
 //  ⚠️ NO MODIFICAR NADA POR DEBAJO DE ESTA LÍNEA ⚠️
 module.exports = {
