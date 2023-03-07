@@ -46,7 +46,7 @@ function guardarTragos(tragosQueue) {
   const tragosObj = {};
 
   while(tragosQueue.size() > 0){ // mientra que el tamaño de la queue sea mayor que 0
-    const trago = tragosQueue.dequeue(); // guardo el primer elemento de la queue
+    const trago = tragosQueue.dequeue(); // saco el primer elemento de la queue y lo guardo
 
     if(!tragosObj[trago]){  //si en el objeto tragos no tiene de propiedad el primer elemento que saque de la queue
       tragosObj[trago] = {trago: trago, cantidad: 1}; //le asigno la propiedad con su valor
@@ -54,8 +54,9 @@ function guardarTragos(tragosQueue) {
       tragosObj[trago].cantidad++; //accede al valor de su prop cantidad e incrementalo por uno
     }
   }
-
-  return tragosObj;
+  // apenas salga del while es porque termine de recorrer la queue y sacar sus elementos para guardarlos
+  //en el objeto tragosObj
+  return tragosObj;  //retorno el objeto terminado
    
 }
 const tragosQueue = new Queue();

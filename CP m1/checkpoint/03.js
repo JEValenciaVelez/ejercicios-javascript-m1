@@ -34,15 +34,21 @@ No debería de arrojar el error si nos pasan los tragos en minúscula o mayúscu
 function consultarPreparacion(tragos) {
    // Tu código aquí:
    return function (carta){
-    const result = [];
+    const result = [];  // instancio constante de arreglo donde voy a introducir los arreglos respuesta.
+    // itero en el arreglo de tragos de la funcion superior
     for(const trago of tragos){
+      //verifico que la bebida este en la carta
       const bebida = carta.find(function(b){ return b.name.toLowerCase()===trago.toLowerCase()});//me retona true o false
+      //si existe la bebida en la carta
       if(bebida){
+        //al array resultado le pusheo un array con la consigna
         result.push([`El trago: ${bebida.name}, se prepara de la siguiente forma: ${bebida.preparacion}`]);
+        //de lo contrario si no hay bebida en la carta, retorname el mensaje
       }else{
         return "Por favor verifique bien los nombres de los tragos que quiere solicitar su preparación";
       }
     }
+    //validado todo lo anterior , retorname el arreglo resultado
     return result;
    }
 

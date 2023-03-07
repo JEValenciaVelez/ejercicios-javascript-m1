@@ -35,28 +35,25 @@ REQUISITOS
 */
 
 function prepararMenú(tragos=[], tiempos=[], tiempoLimite) {
-   // Tu código aquí:
-   //instanciar un objeto vacio, luego agruegarle las props tragos y tiempos
-   //asiganrles los valores a las props que cumplan con la validacion
-   //hacer bucle que que itere en el de tragos o en tiempos  de derecha a izquierda y valide con los tiempos 
-   //pushear en las instancias de stack para luego ingreasarlas como values de las props del objeto tragos
-   let solucion = {};
-   let stackTragos = new Stack();
-   let stackTiempos = new Stack();
+   
+   let solucion = {}; //instancio objeto el cual luego voy a llenar con la soluciion
+   let stackTragos = new Stack();  // creo una instancia de la clase Stack  para los tragos
+   let stackTiempos = new Stack();  // creo una instancia stack paa los tiempos
 
+   //creo bucle para iterar en el array tragos q ingresa por parametro
    for(let i = tragos.length-1; i >= 0; i--){
-     if(tiempos[i] < tiempoLimite){
-        stackTragos.push(tragos[i]);
-        solucion['tragos'] = stackTragos;
-        stackTiempos.push(tiempos[i]);
-        solucion['tiempos']= stackTiempos; 
+     if(tiempos[i] < tiempoLimite){ //si el item que correspone a esta iteracion es menor al tiempo limite ingresado por parametro
+        stackTragos.push(tragos[i]); // pushealo en la instancia de stack para tragos
+        solucion['tragos'] = stackTragos; //al objeto solucion creale propiedad tragos y asignale de valor el stack de tragos
+        stackTiempos.push(tiempos[i]);   //al stack tiempos  pusheale el tiempo de esta iteracion
+        solucion['tiempos']= stackTiempos;  // al objeto solucion creale propiedad tiempos y asignale de valor el stack de tiempos
       }
-      else{
-        solucion['tragos'] = stackTragos;
-        solucion['tiempos']= stackTiempos;
+      else{ // de lo contrario 
+        solucion['tragos'] = stackTragos;  // al objeto solucion crea la prop tragos y asignale la instancia de stack de tragos
+        solucion['tiempos']= stackTiempos; // al objeto solucion crea la prop tiempos y asignale el stack de tiempos.
       }
     }
-    return solucion;
+    return solucion;  // apenas validado todo lo anterior , retorna el objeto solucion;
 
 }
 const tragos = ["Tequila", "Whisky", "Vodka", "Ron"];
