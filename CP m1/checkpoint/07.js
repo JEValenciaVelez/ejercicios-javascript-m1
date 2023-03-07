@@ -33,7 +33,7 @@ LinkedList.prototype.encontrarPedidoRepetido = function (nombre) {
       }
       if(!newList.head) return false;
     return newList;
-   //console.log(current.value.nombre)
+   
 };
 const lista1 = new LinkedList();
 lista1.add({ nombre: "Franco", trago: "Fernet" });

@@ -22,20 +22,23 @@ REQUISITOS
 
 function encontrarMasCaros(arreglo=[], precio, ) {
    // Tu código aquí:
-   let i = 0;
-   let masCaros = [];
-
+   let i = 0;  // inicializo variable iteradora en cero
+   let masCaros = []; //inicializo arreglo vacio
+   
+   //itero en el arreglo de objetos ingresado por parametro usando como ref la variable iteradora
    while(i < arreglo.length){
-     
+     //si la propiedad precio del objet que corresponde a la iteracion es mayor al precio ingresado por parametro
       if(arreglo[i].precio > precio){
-         masCaros.push(arreglo[i]);
+         masCaros.push(arreglo[i]);  //pushealo en el arreglo 
       }
 
-      i++;
+      i++; //incremeta uno a i
    }
-   if(masCaros.length < 1) return "No hay tragos disponibles";
 
-   return masCaros;
+   //si el arreglo esta vacio
+   if(masCaros.length < 1) return "No hay tragos disponibles"; //retorna el mensaje
+
+   return masCaros; // retorna el arreglo
 
 
 }
