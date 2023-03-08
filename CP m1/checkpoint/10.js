@@ -36,7 +36,7 @@ BinarySearchTree.prototype.enOrden = function (myList=[]) {
    if(this.right) this.right.enOrden(myList);
 
    //luego de tener lista myList con los objetos values del arbol desordenados 
-   //implemento algortmo de ordenamiento
+   //implemento algoritmo de ordenamiento
 
    let cambio = true;
 

@@ -38,7 +38,7 @@ function consultarPreparacion(tragos) {
     // itero en el arreglo de tragos de la funcion superior
     for(const trago of tragos){
       //verifico que la bebida este en la carta
-      const bebida = carta.find(function(b){ return b.name.toLowerCase()===trago.toLowerCase()});//me retona true o false
+      const bebida = carta.find(function(b){ return b.name.toLowerCase()===trago.toLowerCase()});//me retona el objeto que cumple la validacion
       //si existe la bebida en la carta
       if(bebida){
         //al array resultado le pusheo un array con la consigna

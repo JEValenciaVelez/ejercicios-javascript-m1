@@ -22,16 +22,23 @@ OUTPUT --> Head ➡ ({nombre: "Franco", trago: "Fernet"}) ➡ ({nombre: "Franco"
 
 LinkedList.prototype.encontrarPedidoRepetido = function (nombre) {
    // Tu código aquí:
+   //creo una instancia de la clase  likendlist vacia para llenarla con los items buscados
    let newList = new LinkedList();
+   //instancio variable y le asigno el nodo principal como referencia
    let current = this.head;
-
+   //valido , mientras halla algo en el nodo 
     while(current){
+      //si la propiedad nombre del objeto value es estrictamente igual al nombre ingresado por parametro
        if(current.value.nombre === nombre){
+         // a la linkedlist que instancie le pusheo este objeto value
           newList.add(current.value);
          }
+         // muevete al siguiente nodo
            current = current.next;
       }
+      //despues de salir del while valido , si la la linkedlist que instancie quedo vacia, retorno false
       if(!newList.head) return false;
+      //retorno la linkedlist que instancie con la respuesta
     return newList;
    
 };

@@ -35,7 +35,7 @@ REQUISITOS
 */
 
 function prepararMenú(tragos=[], tiempos=[], tiempoLimite) {
-   
+  
    let solucion = {}; //instancio objeto el cual luego voy a llenar con la soluciion
    let stackTragos = new Stack();  // creo una instancia de la clase Stack  para los tragos
    let stackTiempos = new Stack();  // creo una instancia stack paa los tiempos

@@ -29,21 +29,31 @@ REQUISITOS
 
 LinkedList.prototype.entregarPedido = function (clientes=[]) {
    // Tu código aquí:
+   //instancio una linkedlista vacia para adicionar alli los resultados de busqueda
    const newList = new LinkedList();
-   
+   // tomo de referencia el nodo principal
    let current = this.head;
 
+   //mientras halla nodo 
    while(current){
+      //itero en el arreglo de clientes ingresados por parametro
       for(let cliente of clientes){
+         //instacio objeto vacio par luego llenarlo con las busquedas
          const value = {};
+         //valido si item de la iteracion corresponde con el nombre que estoy buscando en la linkedlist
          if(cliente === current.value.nombre){
+            //creo propiedad en el objeto value  y le asigno el valor
             value['pedido'] = current.value.trago;
             value['recibo'] = current.value.precio;
+            //agruego el objeto a la linkedlist anteriormente instanciada
             newList.add(value);
          }
       }
+      //apenas termine de validar todos los items , me muevo al siguiente nodo
       current = current.next;
    }
+   //apenas salga del while , recorri toda la linkedlist, ya retorno la nueva linkedlist con las respuestas de
+   //busqueda
    return newList;
 };
 const lista = new LinkedList();
